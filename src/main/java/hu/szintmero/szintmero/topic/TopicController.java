@@ -15,7 +15,9 @@ public class TopicController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Topic create(@RequestBody Topic t) { return repo.save(t); }
+    public Topic create(@RequestBody Topic t) {
+        return repo.save(Topic.createNew(t));
+    }
 
     @GetMapping
     public List<Topic> list() { return repo.findAll(); }
